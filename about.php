@@ -36,7 +36,7 @@ if(isset($_SESSION['user_id'])){
 <!-- header section ends -->
 
 <div class="heading">
-   <h3>about us</h3>
+   <h3>Tentang Sentra Durian Tegal</h3>
    <p><a href="home.php">home</a> <span> / about</span></p>
 </div>
 
@@ -47,12 +47,22 @@ if(isset($_SESSION['user_id'])){
    <div class="row">
 
       <div class="image">
-         <img src="images/about-img.svg" alt="">
+        <img src="images/home-img-1.jpg" alt="">
       </div>
 
       <div class="content">
-         <h3>why choose us?</h3>
-         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, neque debitis incidunt qui ipsum sed doloremque a molestiae in veritatis ullam similique sunt aliquam dolores dolore? Quasi atque debitis nobis!</p>
+         <h3>Selamat datang di Sentra Durian pusat informasi dan penjualan durian terbaik dari Tegal</h3>
+         <p>Pusat Durian Berkualitas dari Tegal untuk Indonesia
+
+Sentra Durian Tegal hadir sebagai pusat informasi dan distribusi durian unggulan yang berasal langsung dari kebun-kebun terbaik di wilayah Tegal. Kami berkomitmen untuk menyediakan durian berkualitas tinggi, baik untuk konsumsi pribadi maupun kebutuhan usaha Anda.</p>
+         <p><strong>Kami menawarkan berbagai layanan yang dirancang untuk memenuhi kebutuhan Anda:</strong></p>
+
+<p><strong>1. Penjualan durian segar:</strong> Kami menyediakan berbagai jenis durian unggulan yang siap dikonsumsi, langsung dari kebun terbaik di Tegal.</p>
+
+<p><strong>2. Penyediaan bibit durian:</strong> Tersedia bibit durian berkualitas untuk keperluan budidaya, cocok untuk pemula maupun pelaku usaha durian.</p>
+
+<p><strong>3. Edukasi dan konsultasi:</strong> Kami siap membantu Anda melalui layanan konsultasi seputar penanaman, perawatan pohon durian, hingga peluang bisnisnya.</p>
+
          <a href="menu.html" class="btn">our menu</a>
       </div>
 
