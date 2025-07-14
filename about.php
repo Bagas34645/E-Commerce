@@ -41,7 +41,7 @@ if (isset($_SESSION['user_id'])) {
       <h3>Sentra Durian Tegal</h3>
       <p><strong><i class="fa fa-map-marker-alt"></i></strong> Kalikangkung Kulon, Kalikangkung, Kec. Pangkah,
          Kabupaten Tegal, Jawa Tengah 52471</p>
-      <p><a href="home.php">Beranda</a> <span> / Tentang</span></p>
+      <p><a href="/E-Commerce/">Beranda</a> <span> / Tentang</span></p>
    </div>
 
    <!-- about section starts  -->

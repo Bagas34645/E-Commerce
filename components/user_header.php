@@ -15,14 +15,14 @@ if (isset($message)) {
 
    <section class="flex">
 
-      <a href="home.php" class="logo">Sentra Durian Tegal </a>
+      <a href="/E-Commerce/" class="logo">Sentra Durian Tegal </a>
 
       <nav class="navbar">
-         <a href="home.php">Beranda</a>
-         <a href="about.php">Tentang</a>
-         <a href="menu.php">Produk</a>
-         <a href="orders.php">Pesanan</a>
-         <a href="contact.php">Kontak</a>
+         <a href="/E-Commerce/">Beranda</a>
+         <a href="index_mvc.php?page=tentang">Tentang</a>
+         <a href="index_mvc.php?page=produk">Produk</a>
+         <a href="index_mvc.php?page=orders">Pesanan</a>
+         <a href="index_mvc.php?page=kontak">Kontak</a>
       </nav>
 
       <div class="icons">
@@ -32,7 +32,7 @@ if (isset($message)) {
          $total_cart_items = $count_cart_items->rowCount();
          ?>
          <a href="search.php"><i class="fas fa-search"></i></a>
-         <a href="cart.php"><i class="fas fa-shopping-cart"></i><span>(<?= $total_cart_items; ?>)</span></a>
+         <a href="index_mvc.php?page=cart"><i class="fas fa-shopping-cart"></i><span>(<?= $total_cart_items; ?>)</span></a>
          <div id="user-btn" class="fas fa-user"></div>
          <div id="menu-btn" class="fas fa-bars"></div>
       </div>
