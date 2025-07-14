@@ -4,29 +4,29 @@ include 'components/connect.php';
 
 session_start();
 
-if(isset($_SESSION['user_id'])){
+if (isset($_SESSION['user_id'])) {
    $user_id = $_SESSION['user_id'];
-}else{
+} else {
    $user_id = '';
    header('location:home.php');
 };
 
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
 
-   $address = $_POST['flat'] .', '.$_POST['building'].', '.$_POST['area'].', '.$_POST['town'] .', '. $_POST['city'] .', '. $_POST['state'] .', '. $_POST['country'] .' - '. $_POST['pin_code'];
+   $address = $_POST['jalan'] . ', RT ' . $_POST['rt'] . ', RW ' . $_POST['rw'] . ', ' . $_POST['kelurahan'] . ', ' . $_POST['kecamatan'] . ', ' . $_POST['kabupaten'] . ', ' . $_POST['provinsi'] . ' - ' . $_POST['kode_pos'];
    $address = filter_var($address, FILTER_SANITIZE_STRING);
 
    $update_address = $conn->prepare("UPDATE `users` set address = ? WHERE id = ?");
    $update_address->execute([$address, $user_id]);
 
-   $message[] = 'address saved!';
-
+   $message[] = 'Alamat tersimpan!';
 }
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,28 +40,27 @@ if(isset($_POST['submit'])){
    <link rel="stylesheet" href="css/style.css">
 
 </head>
+
 <body>
-   
-<?php include 'components/user_header.php' ?>
 
-<section class="form-container">
+   <?php include 'components/user_header.php' ?>
 
-   <form action="" method="post">
-      <h3>your address</h3>
-      <input type="text" class="box" placeholder="flat no." required maxlength="50" name="flat">
-      <input type="text" class="box" placeholder="building no." required maxlength="50" name="building">
-      <input type="text" class="box" placeholder="area name" required maxlength="50" name="area">
-      <input type="text" class="box" placeholder="town name" required maxlength="50" name="town">
-      <input type="text" class="box" placeholder="city name" required maxlength="50" name="city">
-      <input type="text" class="box" placeholder="state name" required maxlength="50" name="state">
-      <input type="text" class="box" placeholder="country name" required maxlength="50" name="country">
-      <input type="number" class="box" placeholder="pin code" required max="999999" min="0" maxlength="6" name="pin_code">
-      <input type="submit" value="save address" name="submit" class="btn">
-   </form>
+   <section class="form-container">
 
-</section>
+      <form action="" method="post">
+         <h3>alamat Anda</h3>
+         <input type="text" class="box" placeholder="Jalan/Dusun" required maxlength="100" name="jalan">
+         <input type="text" class="box" placeholder="RT" required maxlength="3" name="rt">
+         <input type="text" class="box" placeholder="RW" required maxlength="3" name="rw">
+         <input type="text" class="box" placeholder="Kelurahan/Desa" required maxlength="50" name="kelurahan">
+         <input type="text" class="box" placeholder="Kecamatan" required maxlength="50" name="kecamatan">
+         <input type="text" class="box" placeholder="Kabupaten/Kota" required maxlength="50" name="kabupaten">
+         <input type="text" class="box" placeholder="Provinsi" required maxlength="50" name="provinsi">
+         <input type="number" class="box" placeholder="Kode Pos" required max="99999" min="0" maxlength="5" name="kode_pos">
+         <input type="submit" value="simpan alamat" name="submit" class="btn">
+      </form>
 
-
+   </section>
 
 
 
@@ -70,7 +69,9 @@ if(isset($_POST['submit'])){
 
 
 
-<?php include 'components/footer.php' ?>
+
+
+   <?php include 'components/footer.php' ?>
 
 
 
@@ -78,8 +79,9 @@ if(isset($_POST['submit'])){
 
 
 
-<!-- custom js file link  -->
-<script src="js/script.js"></script>
+   <!-- custom js file link  -->
+   <script src="js/script.js"></script>
 
 </body>
+
 </html>

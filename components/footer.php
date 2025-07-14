@@ -12,15 +12,7 @@
       <div class="box">
          <img src="images/clock-icon.png" alt="">
          <h3>Buka Dari</h3>
-         <p>00:07am to 22:00pm</p>
-      </div>
-
-      <div class="box">
-         <img src="images/map-icon.png" alt="">
-         <h3>Alamat</h3>
-         <a href="#">Kalikangkung Kulon, Kalikangkung, 
-Kec. Pangkah, Kabupaten Tegal, Jawa Tengah 52471
-</a>
+         <p>08:00am - 11:00pm</p>
       </div>
 
       <div class="box">
@@ -35,7 +27,7 @@ Kec. Pangkah, Kabupaten Tegal, Jawa Tengah 52471
    <div class="credit">&copy; copyright @ <?= date('Y'); ?> by <span>Sentra Durian Tegal</span> | all rights reserved!</div>
 
 </footer>
-
+<!-- 
 <div class="loader">
-   <img src="images/loader.gif" alt="">
-</div>
+   <img src="images/Loading_icon.gif" alt="">
+</div> -->

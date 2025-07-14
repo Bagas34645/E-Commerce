@@ -7,9 +7,9 @@ include 'components/connect.php';
 
 session_start();
 
-if(isset($_SESSION['user_id'])){
+if (isset($_SESSION['user_id'])) {
    $user_id = $_SESSION['user_id'];
-}else{
+} else {
    $user_id = '';
 };
 
@@ -19,6 +19,7 @@ include 'components/add_cart.php';
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,135 +35,129 @@ include 'components/add_cart.php';
    <link rel="stylesheet" href="css/style.css">
 
 </head>
+
 <body>
 
-<?php include 'components/user_header.php'; ?>
+   <?php include 'components/user_header.php'; ?>
 
 
 
-<section class="hero">
+   <section class="hero">
 
-   <div class="swiper hero-slider">
+      <div class="swiper hero-slider">
 
-      <div class="swiper-wrapper">
+         <div class="swiper-wrapper">
 
-         <div class="swiper-slide slide">
-            <div class="content">
-               <span>Sentra Durian Tegal</span>
-               <h3>Rajane Duren</h3>
-               <a href="menu.php" class="btn">lihat menu</a>
+            <div class="swiper-slide slide">
+               <div class="content">
+                  <span>Sentra Durian Tegal</span>
+                  <h3>Rajane Duren</h3>
+                  <a href="menu.php" class="btn">Lihat Produk</a>
+               </div>
+               <div class="image">
+                  <img src="images/home-img-1.jpg" alt="">
+               </div>
             </div>
-            <div class="image">
-               <img src="images/home-img-1.jpg" alt="">
+
+            <div class="swiper-slide slide">
+               <div class="content">
+                  <span>Makan di Tempat</span>
+                  <h3>Rajane Duren</h3>
+                  <a href="menu.html" class="btn">lihat menu</a>
+               </div>
+               <div class="image">
+                  <img src="images/home-img-1.jpg" alt="">
+               </div>
             </div>
+
+            <div class="swiper-slide slide">
+               <div class="content">
+                  <span>Pesan Di</span>
+                  <h3>Nomer Telp 087749790303</h3>
+                  <a href="menu.html" class="btn">lihat menu</a>
+               </div>
+               <div class="image">
+                  <img src="images/home-img-1.jpg" alt="">
+               </div>
+            </div>
+
          </div>
 
-         <div class="swiper-slide slide">
-            <div class="content">
-               <span>Makan di Tempat</span>
-               <h3>Rajane Duren</h3>
-               <a href="menu.html" class="btn">lihat menu</a>
-            </div>
-            <div class="image">
-               <img src="images/home-img-1.jpg" alt="">
-            </div>
-         </div>
-
-         <div class="swiper-slide slide">
-            <div class="content">
-               <span>Pesan Di</span>
-               <h3>Nomer Telp 087749790303</h3>
-               <a href="menu.html" class="btn">lihat menu</a>
-            </div>
-            <div class="image">
-               <img src="images/home-img-1.jpg" alt="">
-            </div>
-         </div>
+         <div class="swiper-pagination"></div>
 
       </div>
 
-      <div class="swiper-pagination"></div>
+   </section>
 
-   </div>
+   <section class="category">
 
-</section>
+      <h1 class="title">Kategori</h1>
 
-<section class="category">
+      <div class="box-container">
+         <a href="category.php?category=Buah Durian" class="box">
+            <img src="images/cat-1.png" alt="">
+            <h3>Buah Durian</h3>
+         </a>
+         <a href="category.php?category=Bibit" class="box">
+            <img src="images/cat-2.png" alt="">
+            <h3>Bibit</h3>
+         </a>
+         <a href="category.php?category=Makanan" class="box">
+            <img src="images/cat-3.png" alt="">
+            <h3>Makanan</h3>
+         </a>
+         <a href="category.php?category=Minuman" class="box">
+            <img src="images/cat-4.png" alt="">
+            <h3>Minuman</h3>
+         </a>
+      </div>
 
-   <h1 class="title">Kategori</h1>
-
-   <div class="box-container">
-
-      <a href="category.php?category=fast food" class="box">
-         <img src="images/cat-1.png" alt="">
-         <h3>buah durian</h3>
-      </a>
-
-      <a href="category.php?category=main dish" class="box">
-         <img src="images/cat-2.png" alt="">
-         <h3>bibit durian</h3>
-      </a>
-
-      <a href="category.php?category=drinks" class="box">
-         <img src="images/cat-3.png" alt="">
-         <h3>bibit jambu</h3>
-      </a>
-
-      <a href="category.php?category=desserts" class="box">
-         <img src="images/cat-4.png" alt="">
-         <h3>bibit mangga</h3>
-      </a>
-
-   </div>
-
-</section>
+   </section>
 
 
 
 
-<section class="products">
+   <section class="products">
 
-   <h1 class="title">latest dishes</h1>
+      <h1 class="title">Produk Kami</h1>
 
-   <div class="box-container">
+      <div class="box-container">
 
-      <?php
-         $select_products = $conn->prepare("SELECT * FROM `products` LIMIT 6");
+         <?php
+         $select_products = $conn->prepare("SELECT * FROM `products` LIMIT 3");
          $select_products->execute();
-         if($select_products->rowCount() > 0){
-            while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){
-      ?>
-      <form action="" method="post" class="box">
-         <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
-         <input type="hidden" name="name" value="<?= $fetch_products['name']; ?>">
-         <input type="hidden" name="price" value="<?= $fetch_products['price']; ?>">
-         <input type="hidden" name="image" value="<?= $fetch_products['image']; ?>">
-         <a href="quick_view.php?pid=<?= $fetch_products['id']; ?>" class="fas fa-eye"></a>
-         <button type="submit" class="fas fa-shopping-cart" name="add_to_cart"></button>
-         <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
-         <a href="category.php?category=<?= $fetch_products['category']; ?>" class="cat"><?= $fetch_products['category']; ?></a>
-         <div class="name"><?= $fetch_products['name']; ?></div>
-         <div class="flex">
-            <div class="price"><span>$</span><?= $fetch_products['price']; ?></div>
-            <input type="number" name="qty" class="qty" min="1" max="99" value="1" maxlength="2">
-         </div>
-      </form>
-      <?php
+         if ($select_products->rowCount() > 0) {
+            while ($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)) {
+         ?>
+               <form action="" method="post" class="box">
+                  <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
+                  <input type="hidden" name="name" value="<?= $fetch_products['name']; ?>">
+                  <input type="hidden" name="price" value="<?= $fetch_products['price']; ?>">
+                  <input type="hidden" name="image" value="<?= $fetch_products['image']; ?>">
+                  <a href="quick_view.php?pid=<?= $fetch_products['id']; ?>" class="fas fa-eye"></a>
+                  <button type="submit" class="fas fa-shopping-cart" name="add_to_cart"></button>
+                  <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
+                  <a href="category.php?category=<?= $fetch_products['category']; ?>" class="cat"><?= $fetch_products['category']; ?></a>
+                  <div class="name"><?= $fetch_products['name']; ?></div>
+                  <div class="flex">
+                     <div class="price"><span>Rp</span><?= number_format($fetch_products['price'], 0, ',', '.'); ?></div>
+                     <input type="number" name="qty" class="qty" min="1" max="99" value="1" maxlength="2">
+                  </div>
+               </form>
+         <?php
             }
-         }else{
+         } else {
             echo '<p class="empty">no products added yet!</p>';
          }
-      ?>
+         ?>
 
-   </div>
+      </div>
 
-   <div class="more-btn">
-      <a href="menu.html" class="btn">veiw all</a>
-   </div>
+      <div class="more-btn">
+         <a href="menu.php" class="btn">Tampilkan Semua</a>
+      </div>
 
-</section>
-
-
+   </section>
 
 
 
@@ -179,27 +174,28 @@ include 'components/add_cart.php';
 
 
 
-<?php include 'components/footer.php'; ?>
 
 
-<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+   <?php include 'components/footer.php'; ?>
 
-<!-- custom js file link  -->
-<script src="js/script.js"></script>
 
-<script>
+   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
-var swiper = new Swiper(".hero-slider", {
-   loop:true,
-   grabCursor: true,
-   effect: "flip",
-   pagination: {
-      el: ".swiper-pagination",
-      clickable:true,
-   },
-});
+   <!-- custom js file link  -->
+   <script src="js/script.js"></script>
 
-</script>
+   <script>
+      var swiper = new Swiper(".hero-slider", {
+         loop: true,
+         grabCursor: true,
+         effect: "flip",
+         pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+         },
+      });
+   </script>
 
 </body>
+
 </html>

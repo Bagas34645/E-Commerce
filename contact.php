@@ -4,13 +4,13 @@ include 'components/connect.php';
 
 session_start();
 
-if(isset($_SESSION['user_id'])){
+if (isset($_SESSION['user_id'])) {
    $user_id = $_SESSION['user_id'];
-}else{
+} else {
    $user_id = '';
 };
 
-if(isset($_POST['send'])){
+if (isset($_POST['send'])) {
 
    $name = $_POST['name'];
    $name = filter_var($name, FILTER_SANITIZE_STRING);
@@ -24,23 +24,22 @@ if(isset($_POST['send'])){
    $select_message = $conn->prepare("SELECT * FROM `messages` WHERE name = ? AND email = ? AND number = ? AND message = ?");
    $select_message->execute([$name, $email, $number, $msg]);
 
-   if($select_message->rowCount() > 0){
+   if ($select_message->rowCount() > 0) {
       $message[] = 'already sent message!';
-   }else{
+   } else {
 
       $insert_message = $conn->prepare("INSERT INTO `messages`(user_id, name, email, number, message) VALUES(?,?,?,?,?)");
       $insert_message->execute([$user_id, $name, $email, $number, $msg]);
 
       $message[] = 'sent message successfully!';
-
    }
-
 }
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -54,37 +53,38 @@ if(isset($_POST['send'])){
    <link rel="stylesheet" href="css/style.css">
 
 </head>
+
 <body>
-   
-<!-- header section starts  -->
-<?php include 'components/user_header.php'; ?>
-<!-- header section ends -->
 
-<div class="heading">
-   <h3>contact us</h3>
-   <p><a href="home.php">home</a> <span> / contact</span></p>
-</div>
+   <!-- header section starts  -->
+   <?php include 'components/user_header.php'; ?>
+   <!-- header section ends -->
 
-<!-- contact section starts  -->
-
-<section class="contact">
-   <div class="row">
-      <div class="image">
-         <img src="images/home-img-1.jpg" alt="">
-      </div>
-
-      <div class="contact-info">
-         <h3>Hubungi Kami</h3>
-         <p><strong>No. HP / WhatsApp:</strong> <a href="https://wa.me/6281234567890" target="_blank">+62 812-3456-7890</a></p>
-         <p><strong>Instagram:</strong> <a href="https://www.instagram.com/rajaneduren_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">@sentraduriantegal</a></p>
-         <p><strong>Alamat:</strong> Kalikangkung Kulon, Kalikangkung, Kec. Pangkah,<br>
-            Kabupaten Tegal, Jawa Tengah 52471</p>
-      </div>
+   <div class="heading">
+      <h3>Hubungi Kami</h3>
+      <p><a href="home.php">Beranda</a> <span> / Kontak</span></p>
    </div>
-</section>
+
+   <!-- contact section starts  -->
+
+   <section class="contact">
+      <div class="row">
+         <div class="image">
+            <img src="images/home-img-1.jpg" alt="">
+         </div>
+
+         <div class="contact-info">
+            <h3>Kontak Kami</h3>
+            <p><strong><i class="fa fa-phone"></i></strong> <a href="https://wa.me/6281234567890" target="_blank">+62 812-3456-7890</a></p>
+            <p><strong><i class="fa-brands fa-instagram"></i></strong> <a href="https://www.instagram.com/rajaneduren_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">@sentraduriantegal</a></p>
+            <p><strong><i class="fa fa-map-marker-alt"></i></strong> Kalikangkung Kulon, Kalikangkung, Kec. Pangkah,<br>
+               Kabupaten Tegal, Jawa Tengah 52471</p>
+         </div>
+      </div>
+   </section>
 
 
-<!-- contact section ends -->
+   <!-- contact section ends -->
 
 
 
@@ -95,9 +95,9 @@ if(isset($_POST['send'])){
 
 
 
-<!-- footer section starts  -->
-<?php include 'components/footer.php'; ?>
-<!-- footer section ends -->
+   <!-- footer section starts  -->
+   <?php include 'components/footer.php'; ?>
+   <!-- footer section ends -->
 
 
 
@@ -106,8 +106,9 @@ if(isset($_POST['send'])){
 
 
 
-<!-- custom js file link  -->
-<script src="js/script.js"></script>
+   <!-- custom js file link  -->
+   <script src="js/script.js"></script>
 
 </body>
+
 </html>
