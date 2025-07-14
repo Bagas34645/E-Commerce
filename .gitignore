@@ -1,0 +1,60 @@
+# Environment files
+.env
+.env.local
+.env.production
+
+# Database files
+*.sql.backup
+*.sql.gz
+
+# Log files
+*.log
+error_log
+access_log
+
+# Cache files
+cache/
+tmp/
+temp/
+
+# User uploaded files (optional - depends on your needs)
+# uploaded_img/*
+# !uploaded_img/.gitkeep
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+
+# Sensitive configuration files
+config/production.config.php
+config/local.config.php
+
+# Composer (if using)
+vendor/
+composer.lock
+
+# Node modules (if using)
+node_modules/
+npm-debug.log
+
+# Build files
+dist/
+build/
