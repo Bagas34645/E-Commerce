@@ -43,7 +43,7 @@ sudo systemctl stop apache2
 sudo systemctl disable apache2
 
 # Install Nginx + PHP-FPM
-sudo apt install nginx php8.1-fpm php8.1-mysql
+sudo apt install nginx php8.2-fpm php8.2-mysql
 
 # Deploy config
 sudo cp nginx.conf /etc/nginx/sites-available/ecommerce
@@ -51,13 +51,13 @@ sudo ln -s /etc/nginx/sites-available/ecommerce /etc/nginx/sites-enabled/
 sudo rm /etc/nginx/sites-enabled/default
 
 # Set permissions
-sudo chown -R www-data:www-data /var/www/html/E-Commerce
-sudo chmod -R 755 /var/www/html/E-Commerce
-sudo chmod 777 /var/www/html/E-Commerce/uploaded_img
+sudo chown -R www-data:www-data /var/www/E-Commerce
+sudo chmod -R 755 /var/www/E-Commerce
+sudo chmod 777 /var/www/E-Commerce/uploaded_img
 
 # Start services
-sudo systemctl start nginx php8.1-fpm
-sudo systemctl enable nginx php8.1-fpm
+sudo systemctl start nginx php8.2-fpm
+sudo systemctl enable nginx php8.2-fpm
 ```
 
 ### Windows Manual Setup
@@ -84,11 +84,11 @@ start nginx.exe
 
 ```bash
 # Check PHP-FPM
-sudo systemctl status php8.1-fpm
-sudo systemctl restart php8.1-fpm
+sudo systemctl status php8.2-fpm
+sudo systemctl restart php8.2-fpm
 
 # Check socket path in nginx.conf
-fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
 ```
 
 ### Clean URLs Not Working
@@ -103,9 +103,9 @@ location / {
 ### File Permissions
 
 ```bash
-sudo chown -R www-data:www-data /var/www/html/E-Commerce
-sudo chmod 755 /var/www/html/E-Commerce
-sudo chmod 777 /var/www/html/E-Commerce/uploaded_img
+sudo chown -R www-data:www-data /var/www/E-Commerce
+sudo chmod 755 /var/www/E-Commerce
+sudo chmod 777 /var/www/E-Commerce/uploaded_img
 ```
 
 ### Check Logs
@@ -115,7 +115,7 @@ sudo chmod 777 /var/www/html/E-Commerce/uploaded_img
 sudo tail -f /var/log/nginx/error.log
 
 # PHP-FPM log
-sudo tail -f /var/log/php8.1-fpm.log
+sudo tail -f /var/log/php8.2-fpm.log
 
 # Test configuration
 sudo nginx -t
@@ -214,10 +214,10 @@ sudo nano /etc/logrotate.d/nginx
 
 ```bash
 # Restart all services
-sudo systemctl restart nginx php8.1-fpm mysql
+sudo systemctl restart nginx php8.2-fpm mysql
 
 # Check service status
-sudo systemctl status nginx php8.1-fpm mysql
+sudo systemctl status nginx php8.2-fpm mysql
 
 # Test nginx config
 sudo nginx -t

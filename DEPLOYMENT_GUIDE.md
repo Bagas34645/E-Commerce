@@ -13,7 +13,7 @@ cp .htaccess ~/htaccess-backup.txt
 
 # Install Nginx dan PHP-FPM
 sudo apt update
-sudo apt install nginx php8.1-fpm php8.1-mysql php8.1-curl php8.1-mbstring php8.1-xml php8.1-gd
+sudo apt install nginx php8.2-fpm php8.2-mysql php8.2-curl php8.2-mbstring php8.2-xml php8.2-gd
 ```
 
 #### 2. Stop Apache dan Start Nginx
@@ -22,9 +22,9 @@ sudo apt install nginx php8.1-fpm php8.1-mysql php8.1-curl php8.1-mbstring php8.
 sudo systemctl stop apache2
 sudo systemctl disable apache2
 sudo systemctl start nginx
-sudo systemctl start php8.1-fpm
+sudo systemctl start php8.2-fpm
 sudo systemctl enable nginx
-sudo systemctl enable php8.1-fpm
+sudo systemctl enable php8.2-fpm
 ```
 
 #### 3. Deploy Konfigurasi
@@ -36,9 +36,9 @@ sudo ln -s /etc/nginx/sites-available/ecommerce /etc/nginx/sites-enabled/
 sudo rm /etc/nginx/sites-enabled/default
 
 # Set permissions
-sudo chown -R www-data:www-data /var/www/html/E-Commerce
-sudo chmod -R 755 /var/www/html/E-Commerce
-sudo chmod -R 777 /var/www/html/E-Commerce/uploaded_img
+sudo chown -R www-data:www-data /var/www/E-Commerce
+sudo chmod -R 755 /var/www/E-Commerce
+sudo chmod -R 777 /var/www/E-Commerce/uploaded_img
 
 # Test dan reload
 sudo nginx -t
@@ -138,8 +138,8 @@ curl -I http://localhost/css/style.css
 
 ```bash
 # Check PHP-FPM status
-sudo systemctl status php8.1-fpm
-sudo systemctl restart php8.1-fpm
+sudo systemctl status php8.2-fpm
+sudo systemctl restart php8.2-fpm
 
 # Check nginx error log
 sudo tail -f /var/log/nginx/error.log
@@ -240,8 +240,8 @@ Setelah migrasi, Anda akan mendapatkan:
 Jika mengalami masalah:
 
 1. Check nginx error log: `/var/log/nginx/error.log`
-2. Check PHP-FPM log: `/var/log/php8.1-fpm.log`
+2. Check PHP-FPM log: `/var/log/php8.2-fpm.log`
 3. Test konfigurasi: `sudo nginx -t`
-4. Restart services: `sudo systemctl restart nginx php8.1-fpm`
+4. Restart services: `sudo systemctl restart nginx php8.2-fpm`
 
 **Selamat! Aplikasi E-Commerce Anda sekarang berjalan di Nginx! 🎉**

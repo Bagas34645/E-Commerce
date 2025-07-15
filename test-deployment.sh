@@ -162,7 +162,7 @@ test_admin_panel() {
 test_upload_directory() {
     print_test "Upload Directory Permissions"
     
-    upload_dir="/var/www/html/E-Commerce/uploaded_img"
+    upload_dir="/var/www/E-Commerce/uploaded_img"
     if [ -d "$upload_dir" ]; then
         permissions=$(stat -c "%a" "$upload_dir" 2>/dev/null)
         if [ "$permissions" = "777" ] || [ "$permissions" = "755" ]; then

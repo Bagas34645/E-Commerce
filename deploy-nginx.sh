@@ -13,7 +13,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 # Configuration variables
-PROJECT_PATH="/var/www/html/E-Commerce"
+PROJECT_PATH="/var/www/E-Commerce"
 NGINX_SITES_AVAILABLE="/etc/nginx/sites-available"
 NGINX_SITES_ENABLED="/etc/nginx/sites-enabled"
 SITE_NAME="ecommerce"
@@ -47,7 +47,7 @@ install_packages() {
     if [ -f /etc/debian_version ]; then
         # Debian/Ubuntu
         apt update
-        apt install -y nginx php8.1-fpm php8.1-mysql php8.1-xml php8.1-curl php8.1-mbstring php8.1-gd php8.1-zip
+        apt install -y nginx php8.2-fpm php8.2-mysql php8.2-xml php8.2-curl php8.2-mbstring php8.2-gd php8.2-zip
     elif [ -f /etc/redhat-release ]; then
         # CentOS/RHEL
         yum install -y epel-release
@@ -138,8 +138,8 @@ start_services() {
     print_status "Starting services..."
     
     # Start PHP-FPM
-    systemctl start php8.1-fpm || systemctl start php-fpm
-    systemctl enable php8.1-fpm || systemctl enable php-fpm
+    systemctl start php8.2-fpm || systemctl start php-fpm
+    systemctl enable php8.2-fpm || systemctl enable php-fpm
     
     # Start Nginx
     systemctl start nginx
